@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WeekCraft</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="app-header__title">
+        <h1>WeekCraft</h1>
+        <p>Недельный планировщик</p>
+      </div>
+
+      <nav class="week-nav" aria-label="Навигация по неделям">
+        <button class="btn btn--secondary" type="button" id="prevWeekBtn">Назад</button>
+        <button class="btn btn--primary" type="button" id="todayBtn">Сегодня</button>
+        <button class="btn btn--secondary" type="button" id="nextWeekBtn">Вперед</button>
+      </nav>
+    </header>
+
+    <main class="app-main">
+      <section class="week-panel" id="weekPanel" aria-label="Дни недели">
+        <article class="week-day">
+          <span class="week-day__name">Пн</span>
+          <strong class="week-day__date">01</strong>
+        </article>
+        <article class="week-day">
+          <span class="week-day__name">Вт</span>
+          <strong class="week-day__date">02</strong>
+        </article>
+        <article class="week-day">
+          <span class="week-day__name">Ср</span>
+          <strong class="week-day__date">03</strong>
+        </article>
+        <article class="week-day">
+          <span class="week-day__name">Чт</span>
+          <strong class="week-day__date">04</strong>
+        </article>
+        <article class="week-day">
+          <span class="week-day__name">Пт</span>
+          <strong class="week-day__date">05</strong>
+        </article>
+        <article class="week-day">
+          <span class="week-day__name">Сб</span>
+          <strong class="week-day__date">06</strong>
+        </article>
+        <article class="week-day">
+          <span class="week-day__name">Вс</span>
+          <strong class="week-day__date">07</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <section class="day-section" aria-labelledby="selectedDayTitle">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Выбранный день</p>
+              <h2 id="selectedDayTitle">Понедельник</h2>
+              <div class="daily-reflection" id="dailyReflection"></div>
+            </div>
+
+            <div class="section-actions">
+              <button class="btn btn--primary" type="button" id="addTaskBtn">Добавить задачу</button>
+              <button class="btn btn--secondary" type="button" id="reviewWeekBtn">Разобрать неделю</button>
+            </div>
+          </div>
+
+          <div class="timeline" id="timeline" aria-label="Таймлайн задач">
+            <div class="timeline-placeholder">
+              <span>09:00</span>
+              <p>Здесь появятся задачи выбранного дня</p>
+            </div>
+            <div class="timeline-placeholder">
+              <span>13:00</span>
+              <p>Свободный слот для планирования</p>
+            </div>
+            <div class="timeline-placeholder">
+              <span>17:00</span>
+              <p>Вечерний блок</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="backlog-section" aria-label="Бэклог задач">
+          <div class="section-header section-header--compact">
+            <div>
+              <p class="section-kicker">Бэклог</p>
+              <h2>Идеи и позже</h2>
+            </div>
+
+            <button class="btn btn--primary" type="button" id="addBacklogTaskBtn">Добавить</button>
+          </div>
+
+          <div class="backlog-tabs" role="tablist" aria-label="Разделы бэклога">
+            <button class="tab-btn is-active" type="button" data-section="ideas" role="tab" aria-selected="true">Идеи</button>
+            <button class="tab-btn" type="button" data-section="later" role="tab" aria-selected="false">Сделать позже</button>
+          </div>
+
+          <div class="backlog-list" id="backlogList">
+            <article class="backlog-item">
+              <span class="category-dot category-dot--idea" aria-hidden="true"></span>
+              <p>Новая идея для планирования</p>
+            </article>
+            <article class="backlog-item">
+              <span class="category-dot category-dot--task" aria-hidden="true"></span>
+              <p>Задача без даты</p>
+            </article>
+          </div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="taskModal" aria-hidden="true">
+    <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="taskModalTitle">
+      <h2 id="taskModalTitle">Задача</h2>
+    </div>
+  </div>
+
+  <div class="modal" id="reviewModal" aria-hidden="true">
+    <div class="modal__content" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle">
+      <h2 id="reviewModalTitle">Разбор недели</h2>
+    </div>
+  </div>
+
+  <div class="undo-toast" id="undoToast" role="status" aria-live="polite">
+    Действие отменено
+  </div>
+</body>
+</html>
